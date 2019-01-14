@@ -10,7 +10,7 @@ require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 # require "action_view/railtie"
-# require "sprockets/railtie"
+require "sprockets/railtie"
 require_relative '../lib/http_method_not_allowed'
 require_relative '../lib/statsd_middleware'
 

@@ -2,6 +2,11 @@
 
 require 'feature_flipper'
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
+  end
+
+  post '/graphql', to: 'graphql#execute'
   match '/v0/*path', to: 'application#cors_preflight', via: [:options]
   match '/services/*path', to: 'application#cors_preflight', via: [:options]
 
