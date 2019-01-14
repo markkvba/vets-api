@@ -1,0 +1,132 @@
+type Account {
+  accountUuid: String
+  errors: Error
+}
+
+type Address {
+  addressLine1: String!
+  addressLine2: String
+  addressLine3: String
+  addressPou: String!
+  addressType: String!
+  city: String!
+  countryCodeIso2: String
+  countryCodeIso3: String
+  countryName: String!
+  countyCode: String
+  countyName: String
+  createdAt: String
+  effectiveEndDate: String
+  effectiveStartDate: String
+  id: Int
+  internationalPostalCode: String
+  sourceDate: String!
+  stateCode: String
+  transactionId: String
+  updatedAt: String
+  vet360Id: String
+  zipCode: String
+  zipCodeSuffix: String
+}
+
+type Email {
+  createdAt: String
+  effectiveEndDate: String
+  effectiveStartDate: String
+  emailAddress: String!
+  id: Int
+  sourceDate: String
+  transactionId: String
+  updatedAt: String
+  vet360Id: String
+}
+
+type Error {
+  message: String
+  type: String
+}
+
+type Loa {
+  current: Int!
+  highest: Int!
+}
+
+type Mutation {
+}
+
+type Phone {
+  areaCode: String!
+  countryCode: String!
+  createdAt: String
+  effectiveEndDate: String
+  effectiveStartDate: String
+  extension: String
+  id: Int
+  isInternational: Boolean
+  isTty: Boolean
+  isVoicemailable: Boolean
+  phoneNumber: String!
+  phoneType: String!
+  sourceDate: String
+  transactionId: String
+  updatedAt: String
+  vet360Id: String
+}
+
+type Profile {
+  authnContext: String
+  birthDate: String
+  email: String!
+  firstName: String
+  gender: String
+  lastName: String
+  lastSignedIn: String
+  loa: Loa!
+  middleName: String
+  multifactor: Boolean
+  verified: Boolean
+  zip: String
+}
+
+type Query {
+  """
+  The user's Account details
+  """
+  userAccount: Account!
+
+  """
+  The user's profile details
+  """
+  userProfile: Profile!
+
+  """
+  The user's VA Profile details
+  """
+  userVaProfile: VaProfile!
+
+  """
+  The user's Vet360 contact information details
+  """
+  userVet360ContactInformation: Vet360ContactInformation!
+}
+
+type VaProfile {
+  birthDate: String
+  errors: Error
+  familyName: String
+  gender: String
+  givenNames: [String!]
+  status: String
+}
+
+type Vet360ContactInformation {
+  email: Email
+  errors: Error
+  faxNumber: Phone
+  homePhone: Phone
+  mailingAddress: Address
+  mobilePhone: Phone
+  residentialAddress: Address
+  temporaryPhone: Phone
+  workPhone: Phone
+}
