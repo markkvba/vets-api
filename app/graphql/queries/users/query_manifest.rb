@@ -12,6 +12,7 @@ module Queries
 
       included do
         field :user_account, resolver: Queries::Users::AccountQuery
+        field :user_profile, resolver: Queries::Users::ProfileQuery
       end
     end
   end
