@@ -10,13 +10,17 @@ module Types
       field :errors, Types::ErrorType, null: true
 
       def account_uuid
-        return unless object.dig(:account)
-
-        object.dig(:account).uuid
+        account&.uuid
       end
 
       def errors
         error_details object.dig(:errors)
+      end
+
+      private
+
+      def account
+        object.dig(:account)
       end
     end
   end
